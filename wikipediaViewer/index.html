@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<script type="text/babel">
+    class Results extends React.Component {
+
+        constructor(props) {
+            super(props);
+
+        }
+
+        formatHTML(a) {
+            return {__html: a}
+        }
+
+        render() {
+            let dangerDiv = '';
+            if (this.props.searchVal !== null) {
+                const results = (this.props.searchVal.query.search);
+                dangerDiv = results.map(d=> <div className="searchResults"
+                                                 dangerouslySetInnerHTML={this.formatHTML(d.snippet)}/>);
+            }
+            return (
+                    <div className="searchContainer">
+                        {dangerDiv}
+                    </div>
+            )
+        }
+    }
+
+
+
+    class InputBox extends React.Component {
+
+        constructor(props) {
+            super(props);
+            this.state = {
+                value: '',
+                searchVal: null
+            };
+        }
+
+        handleChange(event) {
+            this.setState({value: event.target.value});
+        }
+
+        onSearch() {
+            const that = this;
+            $.ajax({
+                url: '//en.wikipedia.org/w/api.php',
+                data: {action: 'query', list: 'search', srsearch: that.state.value, format: 'json'},
+                dataType: 'jsonp',
+                success: function (response) {
+                    that.setState({searchVal: response})
+
+                }
+            });
+
+        }
+
+        render() {
+            return (
+                    <div className="search">
+                       <span className="buttons"><input type="text" value={this.state.value}
+                                                        placeholder="Type Something...."
+                                                        onChange={this.handleChange.bind(this)}/>
+                        <button onClick={this.onSearch.bind(this)}>Search Me</button></span>
+                        <Results searchVal={this.state.searchVal}/>
+                    </div>
+            )
+        }
+
+    }
+    class Application extends React.Component {
+        render() {
+            return <div className="wrapper">
+                <h1>Wikipedia Search!</h1>
+                <InputBox/>
+
+            </div>;
+        }
+    }
+
+    ReactDOM.render(<Application />, document.getElementById('root'));
+</script>
+
+<div id="root">
+
+
+</div>
+</body>
+</html>

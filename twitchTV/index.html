@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script type="text/babel">
+
+    class AllUsers extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                userdata: [],
+                filter: 'all'
+            };
+
+        }
+
+
+        renderUsers(data) {
+
+            if (data === undefined) return <div></div>;
+            if (this.state.filter === 'online' && data !== null && data.stream !== null) {
+                return (
+                        <div className="item">
+                            <span className="logo"><img src={data.id.logo}></img></span>
+                            <span>{data.id.channelName}</span>
+                            <span>{data.stream.channel.status || 'Online'}</span>
+                        </div>)
+            }
+
+            else if (this.state.filter === 'offline' && data.stream === null) {
+                return (
+                        <div className="item">
+                            <span className="logo"><img src={data.id.logo}></img></span>
+                            <span>{data.id.channelName}</span>
+                            <span>{'I am Offline'}</span>
+                        </div>)
+            } else if (this.state.filter === 'all') {
+
+                return (
+                        <div className="item">
+                            <span className="logo"><img src={data.id.logo}></img></span>
+                            <span>{data.id.channelName}</span>
+                            <span>{(data.stream !== null) ? data.stream.channel.status : 'I am Offline'}</span>
+                        </div>)
+            }
+
+        }
+
+        onClick(event) {
+
+            this.setState({filter: event.target.className})
+
+        }
+
+
+        componentDidMount() {
+            var channels = [{
+                channelName: "FreeCodeCamp",
+                logo: 'https://static-cdn.jtvnw.net/jtv_user_pictures/freecodecamp-profile_image-d9514f2df0962329-300x300.png'
+            }, {
+                channelName: "OgamingSC2",
+                logo: 'https://static-cdn.jtvnw.net/jtv_user_pictures/ogamingsc2-profile_image-9021dccf9399929e-300x300.jpeg',
+            }, {
+                channelName: "ESL_SC2",
+                logo: 'https://static-cdn.jtvnw.net/jtv_user_pictures/esl_sc2-profile_image-d6db9488cec97125-300x300.jpeg'
+            }, {
+                channelName: "noobs2ninjas",
+                logo: 'https://static-cdn.jtvnw.net/jtv_user_pictures/noobs2ninjas-profile_image-34707f847a73d934-300x300.png'
+            }];
+            for (const i of channels) {
+
+                axios.get(`https://wind-bow.glitch.me/twitch-api/streams/${i.channelName}`)
+                        .then(res => {
+
+                            const temp = this.state.userdata;
+                            const obj = Object.assign({}, res.data);
+                            obj['id'] = i;
+                            temp.push(obj);
+                            this.setState({userdata: temp});
+                        });
+            }
+
+        }
+
+        render() {
+
+            const rows = this.renderUsers();
+
+            return (
+                    <div className="container">
+                        <div className="header">
+                            <div className="all" onClick={this.onClick.bind(this)}>All Users</div>
+                            <div className="online" onClick={this.onClick.bind(this)}>Online Users</div>
+                            <div className="offline" onClick={this.onClick.bind(this)}>Offline Users</div>
+                        </div>
+                        <div className="userRow">
+                            {this.state.userdata.map((d)=>this.renderUsers(d))}
+                        </div>
+                    </div>
+            )
+
+        }
+    }
+
+
+    class Application extends React.Component {
+        render() {
+            return <div className="wrapper">
+                <h1>Twitch.Tv Streams !</h1>
+                <AllUsers/>
+
+            </div>;
+        }
+    }
+
+
+    ReactDOM.render(<Application />, document.getElementById('root'));
+</script>
+
+
+<div id="root">
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>
+    $(document).ready(function () {
+        makeAPICall();
+        function makeAPICall() {
+            $.ajax({
+                url: "https://api.forismatic.com/api/1.0/",
+                jsonp: "jsonp",
+                dataType: "jsonp",
+                data: {
+                    method: "getQuote",
+                    lang: "en",
+                    format: "jsonp"
+                }
+            }).done(function (data) {
+                console.log(data)
+                $('.quoteContainer').html("\"" + data.quoteText + "\"");
+                $('.author').html(data.quoteAuthor);
+                $('.url').html('<a href="' + data.quoteLink + '"><p class="url">' + data.quoteLink + '</p></a>');
+            })
+        }
+
+        $('.generate').on('click', function () {
+            makeAPICall();
+
+        })
+
+    })
+</script>
+
+<div class="wrapper">
+    <div class="quote"><p class="quoteContainer">He who angers you conquers you.</p>
+    </div>
+    <div class="author">Elizabeth Kenny</div>
+    <div class="source"><p> Source: </p>
+        <span class="url"></span>
+    </div>
+    <button class="generate">Generate New Quote!</button>
+
+</div>
+
+</body>
+</html>

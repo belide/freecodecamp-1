@@ -1,0 +1,169 @@
+.wrapper {
+  display: flex;
+  background-color: lightgrey;
+  flex-direction: column;
+  //Header Start
+  .header {
+    background-color: #003b5b;;
+    flex-basis: 100%;
+    justify-content: flex-end;
+    height: 50px;
+    display: flex;
+    color: #fff;
+    & ul {
+      display: flex;
+      list-style: none;
+      flex-basis: 40%;
+      font-size: 20px;
+      margin: 0;
+      justify-content: center;
+      align-items: center;
+
+      & li {
+        flex-grow: 1;
+        font-size: 30px;
+        color: white;
+        & a {
+          text-decoration: none;
+          color: white;
+
+        }
+      }
+
+    }
+
+  }
+  // End of header
+
+  .home {
+    height: 90vh;
+    width: 100%;
+    position: relative;
+    & img {
+      height: 100%;
+      width: 100%;
+    }
+
+    & .typewrite {
+      position: absolute;
+      top: 40%;
+      left: 40%;
+      font-size: 40px;
+      color: white;
+      text-align: center;
+      /* width: 100%; */
+    }
+  }
+
+  // End of home
+  .portfolio {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    width: 100%;
+    flex-basis: 100%;
+
+    & h1 {
+      align-self: center;
+      font-size: 40px;
+      border-bottom: 5px solid black;
+      &:hover {
+        color: #003b5b;;
+      }
+    }
+
+    .container {
+      display: flex;
+      background-color: gainsboro;
+      .left {
+        display: flex;
+        flex-grow: 1;
+        flex-basis: 100%;
+        flex-wrap: wrap;
+        & img {
+          height: 40%;
+          width: 40%;
+          margin: 10px;
+        }
+      }
+
+      .right {
+        flex-grow: 1;
+        flex-basis: 100%;
+        & iframe {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+
+  }
+
+  //Contact me
+  .contactMe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & h1 {
+      font-size: 40px;
+      border-bottom: 5px solid black;
+      &:hover {
+        color: #003b5b;;
+      }
+
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      background-color: gainsboro;
+
+      .socialIcons {
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-around;
+        width: 30%;
+      }
+
+      .address {
+        display: flex;
+        width: 60%;
+        /* flex-grow: 1; */
+        justify-content: space-around;
+      }
+
+      & form {
+
+        display: flex;
+        flex-direction: column;
+        width: 54%;
+        & input {
+
+          height: 30px;
+          margin-bottom: 5px;
+
+        }
+        & textarea {
+          height: 150px;
+          margin-bottom: 5px;
+        }
+
+        & button {
+          height: 40px;
+
+        }
+      }
+    }
+
+  }
+
+  .footer {
+    width: 100%;
+    & img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+}

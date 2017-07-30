@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="assets/js/scripts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<script>
+    $(document).ready(function () {
+
+        initializeTypingText(0); //Pick first word from array as default
+
+
+    })
+
+    const url = {
+
+        nu: 'http://www.nepalunderground.com/',
+        revamp: 'http://www.revampwear.com/',
+        wheels: 'https://thewheels.com.np/',
+        riderz: 'http://www.riderznepal.com'
+    }
+
+
+    function zoomIn(evt) {
+        const id = ($(evt).attr('alt'));
+        $('.right').html(function () {
+            return "<iframe title='website' src=" + url[id] + "></iframe>";
+
+        })
+
+
+    }
+
+    function zoomOut() {
+        $('.right').html('');
+    }
+</script>
+
+
+<div class="wrapper">
+    <div class="header">
+        <ul>
+            <li><a href="#">Home </a></li>
+            <li><a href="#portfolio"> Portfolio </a></li>
+            <li><a href="#contact">Contact Me</a></li>
+        </ul>
+    </div>
+    <div class="home">
+        <img src="https://raw.githubusercontent.com/bikramkawan/portfolio/master/src/component/body/bg.jpg">
+        <span class="typewrite"> TEXT HERE</span>
+    </div>
+
+    <div class="portfolio">
+
+        <h1 id="portfolio"> Portfolio</h1>
+        <div class="container">
+            <div class="left">
+                <img src="https://raw.githubusercontent.com/bikramkawan/portfolio/master/src/component/pages/portfolio/img/nu.png"
+                     alt="nu" title="Nepal Underground" onmouseover="zoomIn(this)"
+                     onmouseleave="zoomOut()"/>
+                <img src="https://raw.githubusercontent.com/bikramkawan/portfolio/master/src/component/pages/portfolio/img/revamp.png"
+                     alt="revamp" className="animated jello"
+                     title="Revamp Wear" onmouseover="zoomIn(this)" onmouseleave="zoomOut()"/>
+
+                <img src="https://raw.githubusercontent.com/bikramkawan/portfolio/master/src/component/pages/portfolio/img/wheels.png"
+                     alt="wheels" className="animated jello" onmouseover="zoomIn(this)"
+                     onmouseleave="zoomOut()"/>
+                <img src="https://raw.githubusercontent.com/bikramkawan/portfolio/master/src/component/pages/portfolio/img/riderz.png"
+                     alt="riderz" className="animated jello" onmouseover="zoomIn(this)"
+                     onmouseleave="zoomOut()"/>
+            </div>
+            <div class="right">
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="contactMe">
+        <h1 id="contact">Contact Me</h1>
+        <div class="container">
+            <div class="socialIcons">
+                <a href="https://twitter.com/bikramkawan">
+                    <i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/bikramkawan/">
+                    <i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+                <a href="http://www.github.com/bikramkawan">
+                    <i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+            </div>
+
+            <h4>Let me hear from you!</h4>
+
+            <div class="address">
+                <div class="list">
+                    <i class="fa fa-map-marker fa-3x" aria-hidden="true"></i>
+                    <h4>Address</h4>
+                    <p>Bhaktapur, Nepal</p>
+                </div>
+
+                <div class="list">
+                    <i class="fa fa-phone fa-3x" aria-hidden="true"></i>
+                    <h5>Phone</h5>
+
+                    <p>+977-9841-XXXXXX</p>
+                </div>
+
+                <div class="list">
+                    <i class="fa fa-envelope-o fa-3x" aria-hidden="true"></i>
+                    <h5>Email</h5>
+                    <p>bikramkawan@gmail.com</p>
+                </div>
+
+            </div>
+
+            <form method="POST" action="http://formspree.io/bikramkawan@gmail.com" className="form">
+                <input type="email" name="email" placeholder="Your email"/>
+                <textarea name="message" placeholder="Your message"></textarea>
+                <button type="submit" className="btn">Send</button>
+            </form>
+        </div>
+
+
+    </div>
+
+
+    <div class="footer">
+        <img src="https://raw.githubusercontent.com/bikramkawan/portfolio/master/src/component/footer/footer.png">
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+.wrapper {
+
+  display: flex;
+  height: 95vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+  text-align: center;
+
+  & > div {
+    margin-bottom: 15px;
+
+  }
+  .quote {
+    height: 40vh;
+    width: 80%;
+    background: aliceblue;
+    align-self: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 4px solid;
+    border-radius: 10%;
+    & p {
+      font-size: 50px;
+      padding: 10px;
+    }
+  }
+
+  .author {
+    background: gainsboro;
+    height: 40px;
+    width: 70%;
+    align-self: center;
+    font-size: 30px;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 67%;
+  }
+  .source {
+    height: 39px;
+    font-size: 19px;
+    width: 70%;
+    background: aliceblue;
+    border: 1px solid;
+    border-radius: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & p {
+      margin-right: 10px;
+    }
+  }
+
+  button {
+    height: 80px;
+    font-size: 22px;
+    border: 4px solid;
+    border-radius: 10%;
+    cursor: pointer;
+    &:hover {
+      background-color: aliceblue;
+      color: black;
+    }
+  }
+  .button {
+    height: 80px;
+    background-color: gainsboro;
+    color: white;
+    text-align: center;
+    width: 70%;
+
+  }
+}

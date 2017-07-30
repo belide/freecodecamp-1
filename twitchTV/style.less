@@ -1,0 +1,64 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .container {
+    display: flex;
+    height: 70vh;
+    background: aliceblue;
+    flex-direction: column;
+    width: 80vw;
+
+    .header {
+      display: flex;
+      justify-content: space-around;
+      height: 50px;
+      align-items: center;
+      font-size: 30px;
+      background-color: lightblue;
+      & div {
+        cursor: pointer;
+        text-align: center;
+        flex: 1;
+        &:hover {
+          background-color: gray;
+          color: white;
+
+        }
+      }
+
+    }
+
+    .userRow {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      .item {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+        &:nth-child(odd) {
+          background: lightgray;
+        }
+        &:nth-child(even) {
+          background: dimgray;
+        }
+        & img {
+          height: 80px;
+          width: 150px;
+        }
+
+        & span {
+          flex: 1;
+          font-size: 21px;
+        }
+      }
+    }
+  }
+}
+
