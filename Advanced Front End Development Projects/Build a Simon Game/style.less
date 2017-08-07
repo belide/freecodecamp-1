@@ -1,0 +1,129 @@
+.simonContainer {
+  display: flex;
+  height: 100vh;
+  background: aliceblue;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .mainContainer {
+    position: relative;
+    .grid {
+      height: 60vh;
+      width: 40vw;
+      background: darkgrey;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      &.gameOn {
+        cursor: pointer;
+      }
+      .innerCircle {
+        flex-grow: 1;
+        flex-basis: 45%;
+        background: purple;
+        height: 43%;
+        margin: 2%;
+
+        &.red {
+          &.inactive {
+            background-color: #9f0f17;
+          }
+          &.active {
+            background-color: #FC0102;
+          }
+
+        }
+        &.blue {
+          &.inactive {
+            background-color: #094a8f;
+          }
+          &.active {
+            background-color: #1c8cff;
+          }
+        }
+        &.green {
+          &.inactive {
+            background-color: #00a74a
+          }
+          &.active {
+            background-color: #13ff7c;
+          }
+        }
+        &.yellow {
+          &.inactive {
+            background-color: #cca707;
+          }
+          &.active {
+            background-color: #fed93f;
+          }
+        }
+      }
+    }
+
+    .center {
+      position: absolute;
+      top: 20%;
+      left: 25%;
+      height: 63%;
+      width: 50%;
+      background: lightgrey;
+      border-radius: 50%;
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      .top {
+        flex-basis: 20%;
+        width: 100%;
+        border-bottom: 1px solid;
+        font-size: 40px;
+      }
+      .middle {
+        flex-basis: 40%;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 30px;
+        &.gameOn {
+          cursor: pointer;
+        }
+        .section {
+          border-radius: 50%;
+          padding: 10px;
+          background-color: #f98110;
+          &.score {
+            display: none;
+            font-size: 50px;
+          }
+          &.start {
+            background-color: green;
+
+          }
+          &.strict {
+            background-color: red;
+
+          }
+        }
+      }
+      .bottom {
+        flex-basis: 20%;
+        background: dodgerblue;
+        font-size: 30px;
+        border-radius: 50%;
+        padding: 10px;
+        cursor: pointer;
+      }
+
+    }
+
+  }
+  .link{
+    margin-top: 20px;
+  }
+}
