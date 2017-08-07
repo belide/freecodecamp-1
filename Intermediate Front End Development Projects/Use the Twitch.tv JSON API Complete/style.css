@@ -1,0 +1,58 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapper .container {
+  display: flex;
+  height: 70vh;
+  background: aliceblue;
+  flex-direction: column;
+  width: 80vw;
+}
+.wrapper .container .header {
+  display: flex;
+  justify-content: space-around;
+  height: 50px;
+  align-items: center;
+  font-size: 30px;
+  background-color: lightblue;
+}
+.wrapper .container .header div {
+  cursor: pointer;
+  text-align: center;
+  flex: 1;
+}
+.wrapper .container .header div:hover {
+  background-color: gray;
+  color: white;
+}
+.wrapper .container .userRow {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.wrapper .container .userRow .item {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+.wrapper .container .userRow .item:nth-child(odd) {
+  background: lightgray;
+}
+.wrapper .container .userRow .item:nth-child(even) {
+  background: dimgray;
+}
+.wrapper .container .userRow .item img {
+  height: 80px;
+  width: 150px;
+}
+.wrapper .container .userRow .item span {
+  flex: 1;
+  font-size: 21px;
+}
