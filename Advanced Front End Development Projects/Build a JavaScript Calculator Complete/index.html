@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<div id='root'></div>
+<script type="text/babel">
+
+    class Application extends React.Component {
+
+
+        constructor() {
+            super();
+            this.state = {
+                textVal: ''
+
+            }
+
+        }
+
+
+        onResultDisp() {
+
+            let results = 0;
+            try {
+                results = eval(this.state.textVal);
+                $('.result').text(results);
+                this.setState({textVal: results})
+
+            } catch (e) {
+
+                if (e) {
+                    $('.result').text('SYNTAX ERROR');
+                }
+            }
+
+        }
+
+
+        onClick(event) {
+            const innerText = event.target.innerText;
+            if (innerText === 'AC') {
+                this.setState({textVal: ''});
+                $('.result').text('0');
+                return;
+            }
+            this.setState({textVal: this.state.textVal.toString().concat(innerText)});
+            $('.result').text(this.state.textVal.toString().concat(innerText))
+
+        }
+
+        onDelete() {
+            const temp = this.state.textVal.toString().slice(0, this.state.textVal.length - 1);
+            if (temp.length < 1) return;
+            this.setState({textVal: temp})
+            $('.result').text(temp);
+        }
+
+
+        render() {
+            return (
+                    <div className="calcContainer">
+                        <div className="buttonsContainer">
+                            <div className="mybutton result">0</div>
+                            <div className="mybutton number resetBtn " onClick={this.onClick.bind(this)}>AC</div>
+                            <div className="mybutton number " onClick={this.onDelete.bind(this)}><i
+                                    className="fa fa-arrow-left"
+                                    aria-hidden="true"></i></div>
+                            <div className="mybutton number" onClick={this.onClick.bind(this)}>%</div>
+                            <div className="mybutton operator" onClick={this.onClick.bind(this)}>/</div>
+                            <div className="mybutton number" onClick={this.onClick.bind(this)}>7</div>
+                            <div className="mybutton number" onClick={this.onClick.bind(this)}>8</div>
+                            <div className="mybutton number" onClick={this.onClick.bind(this)}>9</div>
+                            <div className="mybutton operator" onClick={this.onClick.bind(this)}>*</div>
+                            <div className="mybutton number" onClick={this.onClick.bind(this)}>4</div>
+                            <div className="mybutton number" onClick={this.onClick.bind(this)}>5</div>
+                            <div className="mybutton number" onClick={this.onClick.bind(this)}>6</div>
+                            <div className="mybutton operator" onClick={this.onClick.bind(this)}>-</div>
+                            <div className="mybutton number" onClick={this.onClick.bind(this)}>1</div>
+                            <div className="mybutton number" onClick={this.onClick.bind(this)}>2</div>
+                            <div className="mybutton number" onClick={this.onClick.bind(this)}>3</div>
+                            <div className="mybutton operator" onClick={this.onClick.bind(this)}>+</div>
+                            <div className="mybutton number zero-btn" onClick={this.onClick.bind(this)}>0</div>
+                            <div className="mybutton number dot" onClick={this.onClick.bind(this)}>.</div>
+                            <div className="mybutton  operator" onClick={this.onResultDisp.bind(this)}>=</div>
+                            <a className="link" href="https://codepen.io/bikramkawan/full/zdqdPE/">See Live on Codepen</a>
+                        </div>
+
+                    </div>
+            )
+
+        }
+
+
+    }
+
+
+
+
+    ReactDOM.render(<Application />, document.getElementById('root'));
+</script>
+</body>
+</html>
