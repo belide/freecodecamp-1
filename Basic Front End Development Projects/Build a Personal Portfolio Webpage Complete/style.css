@@ -1,0 +1,141 @@
+.wrapper {
+  display: flex;
+  background-color: lightgrey;
+  flex-direction: column;
+}
+.wrapper .header {
+  background-color: #003b5b;
+  flex-basis: 100%;
+  justify-content: flex-end;
+  height: 50px;
+  display: flex;
+  color: #fff;
+}
+.wrapper .header ul {
+  display: flex;
+  list-style: none;
+  flex-basis: 40%;
+  font-size: 20px;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper .header ul li {
+  flex-grow: 1;
+  font-size: 30px;
+  color: white;
+}
+.wrapper .header ul li a {
+  text-decoration: none;
+  color: white;
+}
+.wrapper .home {
+  height: 90vh;
+  width: 100%;
+  position: relative;
+}
+.wrapper .home img {
+  height: 100%;
+  width: 100%;
+}
+.wrapper .home .typewrite {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  font-size: 40px;
+  color: white;
+  text-align: center;
+  /* width: 100%; */
+}
+.wrapper .portfolio {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  width: 100%;
+  flex-basis: 100%;
+}
+.wrapper .portfolio h1 {
+  align-self: center;
+  font-size: 40px;
+  border-bottom: 5px solid black;
+}
+.wrapper .portfolio h1:hover {
+  color: #003b5b;
+}
+.wrapper .portfolio .container {
+  display: flex;
+  background-color: gainsboro;
+}
+.wrapper .portfolio .container .left {
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 100%;
+  flex-wrap: wrap;
+}
+.wrapper .portfolio .container .left img {
+  height: 40%;
+  width: 40%;
+  margin: 10px;
+}
+.wrapper .portfolio .container .right {
+  flex-grow: 1;
+  flex-basis: 100%;
+}
+.wrapper .portfolio .container .right iframe {
+  height: 100%;
+  width: 100%;
+}
+.wrapper .contactMe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapper .contactMe h1 {
+  font-size: 40px;
+  border-bottom: 5px solid black;
+}
+.wrapper .contactMe h1:hover {
+  color: #003b5b;
+}
+.wrapper .contactMe .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: gainsboro;
+}
+.wrapper .contactMe .container .socialIcons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-around;
+  width: 30%;
+}
+.wrapper .contactMe .container .address {
+  display: flex;
+  width: 60%;
+  /* flex-grow: 1; */
+  justify-content: space-around;
+}
+.wrapper .contactMe .container form {
+  display: flex;
+  flex-direction: column;
+  width: 54%;
+}
+.wrapper .contactMe .container form input {
+  height: 30px;
+  margin-bottom: 5px;
+}
+.wrapper .contactMe .container form textarea {
+  height: 150px;
+  margin-bottom: 5px;
+}
+.wrapper .contactMe .container form button {
+  height: 40px;
+}
+.wrapper .footer {
+  width: 100%;
+}
+.wrapper .footer img {
+  height: 100%;
+  width: 100%;
+}
